@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { IoIosArrowBack } from "react-icons/io";
-import products from "../products";
+import axios from "axios";
 import {
     Button,
   Card,
@@ -15,7 +15,17 @@ import Rating from "../components/Rating";
 
 const ProductScreen = () => {
   const { id: productId } = useParams();
-  const product = products.find((p) => p._id === productId);
+  console.log(productId);
+  const [product,setProduct] = useState({});
+
+  useEffect(()=>{
+    const fetchProduct = async () =>{
+      const { data } = await axios.get(`/api/products/${productId}`);
+      setProduct(data);
+      console.log(data);
+    }
+    fetchProduct();
+  },[productId]);
   return (
     <>
       <Link to="/" className="m-2">

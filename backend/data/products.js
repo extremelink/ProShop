@@ -1,5 +1,6 @@
 const products = [
   {
+    
     "name": "Wireless Bluetooth Headphones",
     "image": "/images/headphones.jpg",
     "description": "High-quality wireless headphones with noise cancellation and 20-hour battery life.",
@@ -11,6 +12,7 @@ const products = [
     "numReviews": 120
 },
 {
+    
     "name": "AirPods Pro",
     "image": "/images/airpods.jpg",
     "description": "Active noise-cancellation, superior sound quality, and seamless connectivity with Apple devices.",

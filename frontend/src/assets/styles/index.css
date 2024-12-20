@@ -1,3 +1,6 @@
+  .link{
+    text-decoration: none;
+  }
 
   .nav-link{
     text-decoration: none;
@@ -9,4 +12,17 @@
     font-weight: bold;
   }
 
+  .product-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
   
+  .product-card:hover {
+    transform: scale(1.10); /* Scales the card up by 5% */
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); Adds a shadow for the pop effect */
+  }
+  
+  .custom-gap{
+    display: flex;
+    /* gap: 10px; */
+  }
