@@ -3,7 +3,7 @@ import { Button, Card, Col, Container, Form, Image, ListGroup, Row } from 'react
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom'
 import Message from '../components/Message';
-import { addToCart } from '../slices/cartSlice';
+import { addToCart, removeFromCart } from '../slices/cartSlice';
 import { FaTrash } from 'react-icons/fa';
 
 const CartScreen = () => {
@@ -17,10 +17,13 @@ const CartScreen = () => {
         dispatch(addToCart({...item, qty}));
     }
 
-    const removeFromCartHandler = (id) =>{
-
+    const removeFromCartHandler = async (id) =>{
+        dispatch(removeFromCart(id))
     }
 
+    const checkoutHandler = () => {
+        navigate('/login?redirect=shipping');
+    }
 
   return (
     <Container>
@@ -96,7 +99,13 @@ const CartScreen = () => {
                 </ListGroup.Item>
             </ListGroup>
             <ListGroup.Item className='d-flex justify-content-center'>
-                <Button type='button' variant='light' className='btn-block' disabled={cartItems.length === 0}>
+                <Button 
+                    type='button' 
+                    variant='light' 
+                    className='btn-block' 
+                    disabled={cartItems.length === 0}
+                    onClick={() => checkoutHandler}
+                    >
                     Proceed To Checkout
                 </Button>
             </ListGroup.Item>
