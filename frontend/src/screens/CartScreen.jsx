@@ -11,6 +11,8 @@ const CartScreen = () => {
     const dispatch = useDispatch();
     const cart = useSelector( state => state.cart )
     const { cartItems } = cart;
+    const { userInfo } = useSelector( state => state.auth);
+
     console.log('cartItems',cart);
 
     const addToCartHandler = async (item, qty) =>{
@@ -22,7 +24,12 @@ const CartScreen = () => {
     }
 
     const checkoutHandler = () => {
-        navigate('/login?redirect=shipping');
+        console.log('clicked!')
+        if(userInfo){
+            navigate('/shipping');
+        }else{
+            navigate('/login?redirect=shipping');
+        }
     }
 
   return (
@@ -104,7 +111,7 @@ const CartScreen = () => {
                     variant='light' 
                     className='btn-block' 
                     disabled={cartItems.length === 0}
-                    onClick={() => checkoutHandler}
+                    onClick={() => checkoutHandler()}
                     >
                     Proceed To Checkout
                 </Button>
