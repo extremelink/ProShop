@@ -40,7 +40,7 @@ return (
 
             <Card.Text as ='div'>
                 <Rating 
-                    value={product.Rating}
+                    value={product.rating}
                     text={`${product.numReviews} reviews`}
                     />
             </Card.Text>

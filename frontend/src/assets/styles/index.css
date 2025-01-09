@@ -26,3 +26,22 @@
     display: flex;
     /* gap: 10px; */
   }
+
+  .app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensures it takes the full height of the viewport */
+  }
+
+  main {
+    flex-grow: 1; /* This allows the main content to expand */
+    padding-bottom: 20px;
+  }
+
+  footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #f8f9fa; /* Optional: Customize the footer background color */
+    position: relative;
+    z-index: 10;
+  }
