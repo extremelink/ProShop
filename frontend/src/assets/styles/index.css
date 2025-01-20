@@ -45,3 +45,8 @@
     position: relative;
     z-index: 10;
   }
+ 
+  .pagination-item.active {
+    color: black !important;  /* Ensure active text is black */
+    background-color: black !important;  /* Change background to white */
+  }
