@@ -20,6 +20,7 @@ import { useCreateReviewMutation, useGetProductDetailsQuery } from "../slices/pr
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { toast } from "react-toastify";
+import Meta from "../components/Meta";
 
 
 const ProductScreen = () => {
@@ -77,6 +78,8 @@ const ProductScreen = () => {
             </Message>
         ) : (
           <>
+
+                  <Meta title={product.name} />
           <Link to="/" className="m-2">
         <IoIosArrowBack color="black" size={30} />
       </Link>

@@ -3,15 +3,19 @@ import Product from '../components/Product'
 import { useGetProductsQuery } from '../slices/productApiSlice'
 import Loader from '../components/Loader';
 import Message from '../components/Message';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Paginate from '../components/Paginate';
+import ProductCarousel from '../components/ProductCarousel';
 
 const HomeScreen = () => {
-  const { pageNumber } = useParams()
+  const { pageNumber, keyword } = useParams()
   
-  const { data, isLoading, error } = useGetProductsQuery({ pageNumber });
+  const { data, isLoading, error } = useGetProductsQuery({ keyword,pageNumber });
   return (
     <> 
+    { !keyword ? (
+      <ProductCarousel />
+    ) : <Link to='/' className='btn btn-light mb-4'>Go Back</Link> }
       {isLoading ? (
         <Loader />
       ) : error ? (
@@ -31,23 +35,13 @@ const HomeScreen = () => {
             <Paginate 
             pages={data.pages}
             page={data.page}
+            keyword = {keyword ? keyword : ''}
             />
         </>
 
       )
       
       }
-
-      {/* { isLoading? <h1>Loading...</h1> : isError? <h1>Error</h1> : <>
-      
-    <h1>Latest Products</h1>
-    <Row className='m-2'>
-        {products.map(product => (
-            <Col key={product._id} xs={12} sm={6} md={4} className="d-flex justify-content-center">
-                <Product product={ product } />
-            </Col>
-        ))}
-    </Row></>} */}
     </>
     
   )

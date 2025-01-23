@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLogoutMutation } from "../slices/usersApiSlice";
 import { logout } from "../slices/authSlice";
 import { toast } from 'react-toastify'
+import SearchBox from "./SearchBox";
 
 const Header = () => {
 
@@ -40,6 +41,7 @@ const Header = () => {
           <Navbar.Collapse id="basic-navbar-nav">
           
             <Nav className="ms-auto">
+              <SearchBox />
               <Nav.Link as={Link} to="/cart"
                 className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
                 >

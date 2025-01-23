@@ -25,9 +25,11 @@ import ProductListScreen from './screens/admin/ProductListScreen';
 import ProductEditScreen from './screens/admin/ProductEditScreen';
 import UserListScreen from './screens/admin/UserListScreen';
 import UserEditScreen from './screens/admin/UserEditScreen';
+import { HelmetProvider } from 'react-helmet-async';
 
 const App = () => { 
   return (
+    <HelmetProvider>
     <Provider store={store}>
       <PayPalScriptProvider deferLoading={ true }>
     <BrowserRouter>
@@ -37,7 +39,9 @@ const App = () => {
       <main className="main py-3">
         <Routes>
           <Route path="/" element={<HomeScreen />} />
+          <Route path="/search/:keyword" element={<HomeScreen />} />
           <Route path="/page/:pageNumber" element={<HomeScreen/>} />
+          <Route path='/search/:keyword/page/:pageNumber' element={<HomeScreen />} />
           <Route path="/product/:id" element={<ProductScreen />} />
           <Route path="/cart" element={<CartScreen />} />
           <Route path='/login' element={<LoginScreen />} />
@@ -66,6 +70,7 @@ const App = () => {
     </BrowserRouter>
     </PayPalScriptProvider>
     </Provider>
+    </HelmetProvider>
   );
 };
  
